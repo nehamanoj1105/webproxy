@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Proxy</title>
+    <style>
+        body {
+            background-color: #000;
+            color: aqua;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #111;
+            border-bottom: 2px solid aqua;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: aqua;
+        }
+
+        .nav-links a {
+            color: aqua;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00cccc;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .proxy-container {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px aqua;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid aqua;
+            background: #111;
+            color: aqua;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: aqua;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #00cccc;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a {
+                margin-left: 10px;
+                font-size: 1em;
+            }
+
+            input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">Web Proxy</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <h1>Secure Web Proxy</h1>
+        <div class="proxy-container">
+            <input type="text" id="urlInput" placeholder="Enter URL here...">
+            <button onclick="redirect()">Browse</button>
+        </div>
+    </div>
+
+    <script>
+        function redirect() {
+            let url = document.getElementById('urlInput').value;
+            if (url) {
+                window.location.href = "/proxy?url=" + encodeURIComponent(url);
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        }
+    </script>
+
+</body>
+</html>
